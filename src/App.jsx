@@ -11,7 +11,7 @@ export default function App() {
     setPage(1);
   };
 
-  // On hover, move the "No" button to a random spot that doesn’t overlap the "Yes" button.
+  // On hover, move the "No" button to a random spot that doesn't overlap the "Yes" button.
   const handleNoHover = () => {
     const marginX = 10; // minimum allowed difference in percentage for X
     const marginY = 10; // minimum allowed difference in percentage for Y
@@ -57,6 +57,9 @@ export default function App() {
   // Initial page with teddy bear and buttons.
   return (
     <div style={styles.page}>
+      {/* Music Player added to the initial page */}
+      <MusicPlayer />
+
       {/* Inline keyframes for initial animations */}
       <style>
         {`
@@ -111,7 +114,7 @@ function MusicPlayer() {
       });
     }
   }, []);
-  return <audio ref={audioRef} src="/assets/valentine-music.mp3" loop />;
+  return <audio ref={audioRef} src="/assets/blue.mp3" loop />;
 }
 
 // FireworksDisplay: uses canvas-confetti for a fireworks effect.
@@ -158,8 +161,12 @@ function ReasonsPage() {
 
   return (
     <div style={styles.reasonsPage}>
+      {/* Added MusicPlayer to the reasons page */}
+      <MusicPlayer />
+      
       {/* Render drifting background icons (outside the content container) */}
       <BackgroundAnimations />
+      
       {/* Render side flower animations on left and right */}
       {/* Define fadeIn keyframes for the reason items */}
       <style>
@@ -170,6 +177,7 @@ function ReasonsPage() {
           }
         `}
       </style>
+      
       {/* Reasons content sits in its own container with higher z-index */}
       <div style={styles.reasonsContent}>
         <h1 style={styles.reasonsTitle}>5 Reasons Why I Like You</h1>
@@ -384,19 +392,5 @@ const styles = {
     height: "100%",
     pointerEvents: "none",
     zIndex: 0,
-  },
-  leftFlower: {
-    position: "absolute",
-    left: "5%",
-    top: "50%",
-    transform: "translateY(-50%)",
-    zIndex: 5,
-  },
-  rightFlower: {
-    position: "absolute",
-    right: "5%",
-    top: "50%",
-    transform: "translateY(-50%)",
-    zIndex: 5,
   },
 };
